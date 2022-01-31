@@ -22,7 +22,6 @@ public class PageUtil {
      */
     private long pageIndex;
 
-
     /**
      * 전체페이지 블럭 개수
      */
@@ -51,7 +50,7 @@ public class PageUtil {
         -> 젼체페이지블럭개수 구해야함.
         -> 시작페이지번호 구해야함.
         -> 종료페이지번호 구해야함.
-     */
+    */
 
     public PageUtil(long totalCount, long pageSize, long pageIndex, String queryString) {
         this.totalCount = totalCount;
@@ -111,18 +110,23 @@ public class PageUtil {
 
     private void init() {
 
+        //pageIndex는 1보다 작을 수 없음
         if (pageIndex < 1) {
             pageIndex = 1;
         }
 
+        //pageSize역시 1보다 작을수 없다.
         if (pageSize < 1) {
             pageSize = 1;
         }
 
+        //전체 블럭개수
         totalBlockCount = totalCount / pageSize + (totalCount % pageSize > 0 ? 1 : 0);
 
+        //현재 시작페이지번호
         startPage = ((pageIndex - 1) / pageBlockSize) * pageBlockSize + 1;
 
+        //현재 마지막페이지번호
         endPage = startPage + pageBlockSize - 1;
         if (endPage > totalBlockCount) {
             endPage = totalBlockCount;

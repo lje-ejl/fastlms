@@ -36,4 +36,9 @@ public class Course {
     
     LocalDateTime regDt;//등록일(추가날짜)
     LocalDateTime udtDt;//수정일(수정날짜)
+    
+    
+    String filename;
+    String urlFilename;
+    
 }

@@ -46,89 +46,95 @@
     </script>
 </head>
 <body>
-<h1>강좌 관리 - 강좌 등록</h1>
 <!--<div th:replace="/fragments/layout.html :: fragment-admin-body-menu"></div>-->
-
+<h1>강좌 관리 - 강좌 등록</h1>
 
 <div class="detail">
 
-    <form id="submitForm" method="post" >
+    <form id="submitForm" method="post" enctype="multipart/form-data">
 
         <table>
             <tbody>
-                <tr>
-                    <th>강좌 카테고리</th>
-                    <td>
-                        <select name="categoryId" required>
-                            <option value=""> 카테고리 선택 </option>
-                            <option
-                                    th:selected="${detail.categoryId == x.id}"
-                                    th:each="x : ${category}" th:value="${x.id}" th:text="${x.categoryName}"> 기획 </option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        강좌명
-                    </th>
-                    <td>
-                        <input th:value="${detail.subject}" type="text" name="subject" required placeholder="강좌명 입력" />
-                    </td>
-                </tr>
+            <tr>
+                <th>강좌 카테고리</th>
+                <td>
+                    <select name="categoryId" required>
+                        <option value=""> 카테고리 선택 </option>
+                        <option
+                                th:selected="${detail.categoryId == x.id}"
+                                th:each="x : ${category}" th:value="${x.id}" th:text="${x.categoryName}"> 기획 </option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    강좌명
+                </th>
+                <td>
+                    <input th:value="${detail.subject}" type="text" name="subject" required placeholder="강좌명 입력" />
+                </td>
+            </tr>
 
-                <tr>
-                    <th>
-                        키워드
-                    </th>
-                    <td>
-                        <input th:value="${detail.keyword}" type="text" name="keyword" required placeholder="키워드 입력" />
-                    </td>
-                </tr>
+            <tr>
+                <th>
+                    키워드
+                </th>
+                <td>
+                    <input th:value="${detail.keyword}" type="text" name="keyword" required placeholder="키워드 입력" />
+                </td>
+            </tr>
 
-                <tr>
-                    <th>
-                        요약문구
-                    </th>
-                    <td>
-                        <textarea th:text="${detail.summary}" name="summary" required placeholder="요약문구 입력"></textarea>
-                    </td>
-                </tr>
+            <tr>
+                <th>
+                    요약문구
+                </th>
+                <td>
+                    <textarea th:text="${detail.summary}" name="summary" required placeholder="요약문구 입력"></textarea>
+                </td>
+            </tr>
 
-                <tr>
-                    <th>
-                        내용
-                    </th>
-                    <td>
-                        <textarea th:text="${detail.contents}" id="contents" name="contents" placeholder="내용 입력"></textarea>
-                    </td>
-                </tr>
+            <tr>
+                <th>
+                    내용
+                </th>
+                <td>
+                    <textarea th:text="${detail.contents}" id="contents" name="contents" placeholder="내용 입력"></textarea>
+                </td>
+            </tr>
 
 
-                <tr>
-                    <th>
-                        정가
-                    </th>
-                    <td>
-                        <input th:value="${detail.price}" type="text" name="price" required placeholder="정가 입력" />
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        판매가
-                    </th>
-                    <td>
-                        <input th:value="${detail.salePrice}" type="text" name="salePrice" required placeholder="판매가 입력" />
-                    </td>
-                </tr>
+            <tr>
+                <th>
+                    정가
+                </th>
+                <td>
+                    <input th:value="${detail.price}" type="text" name="price" required placeholder="정가 입력" />
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    판매가
+                </th>
+                <td>
+                    <input th:value="${detail.salePrice}" type="text" name="salePrice" required placeholder="판매가 입력" />
+                </td>
+            </tr>
 
-                <tr>
-                    <th>
-                        할인 종료일
-                    </th>
-                    <td>
-                        <input th:value="${detail.saleEndDt}" type="text" name="saleEndDtText" placeholder="할인 종료일 입력" />
-                    </td>
-                </tr>
+            <tr>
+                <th>
+                    할인 종료일
+                </th>
+                <td>
+                    <input th:value="${detail.saleEndDt}" type="text" name="saleEndDtText" placeholder="할인 종료일 입력" />
+                </td>
+            </tr>
+
+            <tr>
+                <th>첨부 파일</th>
+                <td>
+                    <input type="file" name="file" />
+                </td>
+            </tr>
 
             </tbody>
         </table>
@@ -143,23 +149,23 @@
 </div>
 
 
-    <script type="text/javascript" src="/res/se2/js/service/HuskyEZCreator.js" charset="utf-8"></script>
-    <script type="text/javascript">
+<script type="text/javascript" src="/res/se2/js/service/HuskyEZCreator.js" charset="utf-8"></script>
+<script type="text/javascript">
 
-        var oEditors = [];
+    var oEditors = [];
 
-        setTimeout(function() {
+    setTimeout(function() {
 
-            nhn.husky.EZCreator.createInIFrame({
-                oAppRef: oEditors,
-                elPlaceHolder: "contents",
-                sSkinURI: "/res/se2/SmartEditor2Skin.html",
-                fCreator: "createSEditor2"
-            });
+        nhn.husky.EZCreator.createInIFrame({
+            oAppRef: oEditors,
+            elPlaceHolder: "contents",
+            sSkinURI: "/res/se2/SmartEditor2Skin.html",
+            fCreator: "createSEditor2"
+        });
 
 
-        }, 100);
+    }, 100);
 
-    </script>
+</script>
 </body>
 </html>

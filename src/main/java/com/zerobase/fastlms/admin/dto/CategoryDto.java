@@ -21,6 +21,10 @@ public class CategoryDto {
     boolean usingYn;
     
     
+    //ADD COLUMNS
+    int courseCount;
+    
+    
     public static List<CategoryDto> of (List<Category> categories) {
         if (categories != null) {
             List<CategoryDto> categoryList = new ArrayList<>();
